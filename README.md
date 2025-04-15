@@ -2,7 +2,7 @@
 
 **EcoTrack** is a lightweight, responsive web app that helps individuals measure and reduce their carbon footprint. It focuses on two key contributors: **transportation** and **electricity consumption**, and offers real-time insights to support a more sustainable lifestyle.
 
-![EcoTrack Banner](Logo.png)
+![EcoTrack Banner]([Logo.png](https://i.pinimg.com/474x/79/3e/28/793e28d7cb88ca029409a3e16de578c9.jpg))
 
 ---
 
