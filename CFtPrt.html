@@ -122,7 +122,7 @@
       <p id="carEmission"></p>
       <p id="electricityEmission"></p>
       <p id="totalEmission"></p>
-      <p id="dailyLimit"></p>  <!-- Added to show recommended limit -->
+      <div id="dailyLimit"></div> <!-- updated -->
       <p id="monthlyProjection"></p>
       <h3>Recommendation</h3>
       <p id="recommendation"></p>
@@ -194,8 +194,24 @@
 
       document.getElementById("carEmission").textContent = `Vehicle Emissions: ${totalCarEmissions.toFixed(2)} kg CO₂/day`;
       document.getElementById("electricityEmission").textContent = `Electricity Emissions: ${electricityEmissions.toFixed(2)} kg CO₂/day`;
-      document.getElementById("totalEmission").textContent = `Total Daily Emissions: ${totalEmissions.toFixed(2)} kg CO₂`;
-      document.getElementById("dailyLimit").textContent = `Recommended maximum daily emissions: ${carbonLimit.toFixed(1)} kg CO₂/day`;
+
+      const totalEmissionElement = document.getElementById("totalEmission");
+      totalEmissionElement.textContent = `Total Daily Emissions: ${totalEmissions.toFixed(2)} kg CO₂`;
+
+      // Color coding emission
+      if (totalEmissions <= carbonLimit * 0.8) {
+        totalEmissionElement.style.color = "green"; // Safe
+      } else if (totalEmissions <= carbonLimit) {
+        totalEmissionElement.style.color = "orange"; // Close to limit
+      } else {
+        totalEmissionElement.style.color = "red"; // Exceeded
+      }
+
+      document.getElementById("dailyLimit").innerHTML = `
+        <strong style="color: #2a7d4f;">Recommended Maximum Daily Emissions: ${carbonLimit.toFixed(1)} kg CO₂/day</strong>
+        <p style="font-size: 14px; color: #555;">(Try to stay under this limit to help fight climate change!)</p>
+      `;
+
       document.getElementById("monthlyProjection").textContent = `Projected Monthly Emissions: ${monthlyProjection.toFixed(2)} kg CO₂`;
 
       let recommendation = "Great job! Keep tracking your impact.";
